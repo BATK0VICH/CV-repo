@@ -1,11 +1,13 @@
 #include "BinarySearch.hpp"
-#include <iostream>
+#include "../VectorGenerator.hpp"
 
 int BinarySearch::search(const int numberToSearch, const std::vector<int> &vectorToSearch)
 {
+    if (!VectorGenerator::isVectorOk(vectorToSearch))
+        return -1;
+    
     unsigned int lowIndex{ 0 };
-    long unsigned int highIndex{ vectorToSearch.size() - 1};
-    int numberOfOperations{ 0 };
+    long int highIndex{ vectorToSearch.size() - 1 };
 
     while (lowIndex <= highIndex)
     {
@@ -13,17 +15,12 @@ int BinarySearch::search(const int numberToSearch, const std::vector<int> &vecto
         int guess = vectorToSearch.at(middleIndex);
         
         if (guess == numberToSearch)
-        {
-            std::cout << "Number of operations required: " << numberOfOperations << std::endl;
             return middleIndex;
-        }
-            
 
         if (guess > numberToSearch)
             highIndex = middleIndex - 1;
         else
             lowIndex = middleIndex + 1;
-        numberOfOperations++;
     }
     
     return -1;

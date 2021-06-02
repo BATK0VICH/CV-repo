@@ -8,29 +8,15 @@
 
 class VectorGenerator
 {
-public:
+private:
     static const int MAX_VALUE{ 264 };
+public:
     std::vector<int> vec;
-    VectorGenerator(const unsigned int numberOfElements);
+    VectorGenerator(const int numberOfElements);
     friend std::ostream &operator << (std::ostream &os, const VectorGenerator &vector);
+    static bool isVectorOk(const std::vector<int> &vec);
+    static std::vector<int> pop_front(std::vector<int> vecToDeleteFirstItem);
+    static int findMax(std::vector<int> vector);
 };
-
-VectorGenerator::VectorGenerator(const unsigned int numberOfElements)
-{
-    srand(time(NULL));
-    for (unsigned int i{ 0 }; i < numberOfElements; ++i)
-        vec.push_back(rand() % MAX_VALUE);
-}
-
-std::ostream &operator << (std::ostream &os, const VectorGenerator &vector) 
-{
-    std::vector<int> vec = vector.vec;
-    for (unsigned int i{ 0 }; i < vec.size(); ++i)
-    {
-        os << vec.at(i) << " ";
-    }
-    return os;
-}
-
 
 #endif

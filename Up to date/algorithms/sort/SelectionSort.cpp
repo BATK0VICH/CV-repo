@@ -1,7 +1,11 @@
 #include "SelectionSort.hpp"
+#include "../VectorGenerator.hpp"
 
 void SelectionSort::sort(std::vector<int> &toBeSorted)
 {
+    if (!VectorGenerator::isVectorOk(toBeSorted))
+        return;
+        
     for (unsigned long int i{ 0 }; i < toBeSorted.size() - 1; ++i)
     {
         unsigned long int minimalIndex = i;
