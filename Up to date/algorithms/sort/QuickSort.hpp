@@ -12,7 +12,7 @@ private:
     static std::vector<int> greaterThanPivot(const int pivot, const std::vector<int> toBeSorted);
     static std::vector<int> makeVectorWith(std::vector<int>, int pivot, std::vector<int>);
 public:
-   static std::vector<int> sort(std::vector<int> &toBeSorted);
+   static std::vector<int> sort(std::vector<int> toBeSorted);
 };
 
 #endif

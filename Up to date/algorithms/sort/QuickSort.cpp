@@ -1,45 +1,43 @@
 #include "QuickSort.hpp"
 #include <iostream>
 
-std::vector<int> QuickSort::sort(std::vector<int> &toBeSorted)
+
+std::vector<int> QuickSort::sort(std::vector<int> toBeSorted)
 {
     if (toBeSorted.size() < 2)
         return toBeSorted;
 
     int pivot = toBeSorted.at(0);
-    auto less = lessThanPivot(pivot, toBeSorted);
-    auto greater = greaterThanPivot(pivot, toBeSorted);
+    auto less = QuickSort::lessThanPivot(pivot, toBeSorted);
+    auto greater = QuickSort::greaterThanPivot(pivot, toBeSorted);
 
 
-    std::vector<int> sortedLess{ QuickSort::sort(less) };
-    std::vector<int> sortedGreater{ QuickSort::sort(greater) };
-    std::cout << "Before concatenation" << std::endl;
-    std::vector<int> newArray{ makeVectorWith(sortedLess, pivot, sortedGreater) };
+    std::vector<int> sortedLess = QuickSort::sort(less);
+    std::vector<int> sortedGreater = QuickSort::sort(greater);
+    std::vector<int> newArray = makeVectorWith(sortedLess, pivot, sortedGreater);
 
     return  newArray;
 }
 
  std::vector<int> QuickSort::lessThanPivot(const int pivot, const std::vector<int> toBeSorted)
  {
-     std::vector<int> lessPart{ };
-     for (auto it = toBeSorted.cbegin(); it != toBeSorted.cend(); ++it)
-     {
-        if (*it <= pivot)
-            lessPart.push_back(*it);
-        continue;
-     }
-     return lessPart;
+     std::vector<int> lessPart{};
+    for (unsigned long int i{ 0 }; i < toBeSorted.size(); ++i)
+    {
+        if (toBeSorted.at(i) < pivot)
+            lessPart.push_back(toBeSorted.at(i));
+    }
+    return lessPart;
  }
 
  std::vector<int> QuickSort::greaterThanPivot(const int pivot, const std::vector<int> toBeSorted)
  {
-     std::vector<int> greaterPart{ };
-     for (auto it = toBeSorted.cbegin(); it != toBeSorted.cend(); ++it)
+    std::vector<int> greaterPart{};
+     for (unsigned long int i{ 0 }; i < toBeSorted.size(); ++i)
      {
-         if (*it > pivot)
-             greaterPart.push_back(*it);
+         if (toBeSorted.at(i) > pivot)
+            greaterPart.push_back(toBeSorted.at(i));
      }
-     std::cout << "I'm in greater" << std::endl;
      return greaterPart;
  }
 

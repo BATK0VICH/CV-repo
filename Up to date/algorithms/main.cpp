@@ -8,7 +8,7 @@
 
 int main(void)
 {
-    VectorGenerator vector(3);
+    VectorGenerator vector(16);
     std::cout << "Unsorted size " << vector.vec.size() << std::endl;
     std::cout << vector << std::endl;
     vector.vec = QuickSort::sort(vector.vec);
