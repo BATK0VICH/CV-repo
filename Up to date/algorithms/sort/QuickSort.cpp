@@ -44,7 +44,6 @@ std::vector<int> QuickSort::sort(std::vector<int> toBeSorted)
 std::vector<int> QuickSort::makeVectorWith(std::vector<int> less, int pivot, std::vector<int> greater)
  {
     std::vector<int> newArray{ };
-    std::cout << "I'm in concatenation" << std::endl;
     newArray.insert(newArray.end(), less.begin(), less.end());
     newArray.push_back(pivot);
     newArray.insert(newArray.end(), greater.begin(), greater.end());

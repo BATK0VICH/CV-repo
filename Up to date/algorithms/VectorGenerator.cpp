@@ -1,7 +1,8 @@
 #include "VectorGenerator.hpp"
 #include <stdexcept>
 
-VectorGenerator::VectorGenerator(const int numberOfElements)
+VectorGenerator::VectorGenerator(const int numberOfElements) :
+    vec()
 {
     if (numberOfElements < 0)
         throw std::runtime_error("Vector size can't be < 0");
@@ -12,6 +13,10 @@ VectorGenerator::VectorGenerator(const int numberOfElements)
             vec.push_back(rand() % MAX_VALUE);
     }
 }
+
+VectorGenerator::VectorGenerator(const std::vector<int> vector) :
+    vec(vector)
+{}
 
 std::ostream &operator << (std::ostream &os, const VectorGenerator &vector) 
 {

@@ -13,6 +13,7 @@ private:
 public:
     std::vector<int> vec;
     VectorGenerator(const int numberOfElements);
+    VectorGenerator(const std::vector<int> vector);
     friend std::ostream &operator << (std::ostream &os, const VectorGenerator &vector);
     static bool isVectorOk(const std::vector<int> &vec);
     static std::vector<int> pop_front(std::vector<int> vecToDeleteFirstItem);
